@@ -1,6 +1,5 @@
-package io.github.slidingHeroes.characters.heroes
+package io.github.slidingHeroes.units.heroes
 
-import io.github.slidingHeroes.server.world.Hero
 import kotlin.reflect.KClass
 
 data class HeroRecord(val prefab: KClass<Hero>,
@@ -15,11 +14,15 @@ object SelectableHeroes : ArrayList<HeroRecord>(){
         this.add(HeroRecord(
             HeroArcher::class as KClass<Hero>,
             "Archer",
-            "Pew pew meow"))
+            "Arrow to the knee"))
         this.add(HeroRecord(
             HeroMage::class as KClass<Hero>,
             "Mage",
             "So what do I just say fireball?"))
+        this.add(HeroRecord(
+            HeroKnight::class as KClass<Hero>,
+            "Knight",
+            "Parry this you filthy casual"))
 
     }
 }

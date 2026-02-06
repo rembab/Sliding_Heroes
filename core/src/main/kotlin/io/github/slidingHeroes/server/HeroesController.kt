@@ -1,17 +1,16 @@
 package io.github.slidingHeroes.server
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
-import io.github.slidingHeroes.characters.heroes.SelectableHeroes
-import io.github.slidingHeroes.server.world.Hero
-import io.github.slidingHeroes.server.world.LevelScene
+import io.github.slidingHeroes.units.heroes.SelectableHeroes
+import io.github.slidingHeroes.units.heroes.Hero
 import io.github.slidingHeroes.util.PlayerInput
 
 class HeroesController {
     private val heroes = HashMap<Int, Hero>()
 
-    fun add(playerID: Int, heroID: Int, scene: LevelScene) {
-        heroes[playerID] = SelectableHeroes[heroID].prefab.constructors.first().call(scene)
-        heroes[playerID]?.position = scene.middle
+    fun add(playerID: Int, heroID: Int, levelSpace: LevelSpace) {
+        heroes[playerID] = SelectableHeroes[heroID].prefab.constructors.first().call(levelSpace)
+        heroes[playerID]?.position = levelSpace.middle
     }
 
     fun remove(id: Int) {
@@ -20,6 +19,7 @@ class HeroesController {
 
     fun draw(shape: ShapeRenderer) {
         for (hero in heroes.values) {hero.draw(shape)}
+        for (hero in heroes.values) {hero.drawStatus(shape)}
     }
 
     fun update(deltaTime: Float) {
@@ -30,4 +30,6 @@ class HeroesController {
     {
         heroes[id]?.recieveInput(inp)
     }
+
+    fun getHeroes() : MutableCollection<Hero> {return heroes.values}
 }

@@ -1,7 +1,7 @@
 package io.github.slidingHeroes.util
 
 import com.esotericsoftware.kryo.Kryo
-import io.github.slidingHeroes.characters.heroes.HeroRecord
+import io.github.slidingHeroes.units.heroes.HeroRecord
 
 class CharacterSelectedMessage(val heroIndex : Int = 0)
 

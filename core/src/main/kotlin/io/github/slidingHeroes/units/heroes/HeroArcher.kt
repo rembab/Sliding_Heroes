@@ -1,12 +1,13 @@
-package io.github.slidingHeroes.characters.heroes
+package io.github.slidingHeroes.units.heroes
 
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
-import io.github.slidingHeroes.server.world.Hero
-import io.github.slidingHeroes.server.world.LevelScene
+import io.github.slidingHeroes.units.UnitStatus
+import io.github.slidingHeroes.server.LevelSpace
 
-class HeroArcher (scene : LevelScene) : Hero(scene) {
+class HeroArcher (levelSpace : LevelSpace) : Hero(levelSpace) {
 
+    override val status: UnitStatus = UnitStatus(50f)
     override fun draw(shape: ShapeRenderer)
     {
         val halfsize = size * 0.5f

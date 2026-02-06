@@ -1,11 +1,13 @@
-package io.github.slidingHeroes.characters.heroes
+package io.github.slidingHeroes.units.heroes
 
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
-import io.github.slidingHeroes.server.world.Hero
-import io.github.slidingHeroes.server.world.LevelScene
+import io.github.slidingHeroes.units.UnitStatus
+import io.github.slidingHeroes.server.LevelSpace
 
-class HeroMage (scene : LevelScene) : Hero(scene) {
+class HeroMage (scene : LevelSpace) : Hero(scene) {
+
+    override var status : UnitStatus = UnitStatus(75f)
 
     override fun draw(shape: ShapeRenderer)
     {

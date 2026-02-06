@@ -2,12 +2,12 @@ package io.github.slidingHeroes.server
 
 import com.esotericsoftware.kryonet.Connection
 import com.esotericsoftware.kryonet.Listener
-import io.github.slidingHeroes.characters.heroes.HeroRecord
+import io.github.slidingHeroes.server.scenes.GameScene
 import io.github.slidingHeroes.util.CharacterSelectedMessage
 import io.github.slidingHeroes.util.PlayerInput
 
 
-class ConnectionListener (val gameApp : GameApp) : Listener {
+class ConnectionListener (val gameApp : GameScene) : Listener {
     override fun connected(connection: Connection?) {
         if (connection == null) {return}
         println("Player connected! ID: ${connection.id}")

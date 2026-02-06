@@ -9,12 +9,11 @@ import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.Label
 import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton
-import com.badlogic.gdx.scenes.scene2d.ui.TextField
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
 import com.badlogic.gdx.utils.ScreenUtils
 import com.badlogic.gdx.utils.viewport.ScreenViewport
 import com.esotericsoftware.kryonet.Client
-import io.github.slidingHeroes.characters.heroes.SelectableHeroes
+import io.github.slidingHeroes.units.heroes.SelectableHeroes
 import io.github.slidingHeroes.mobile.BasicSkin
 import io.github.slidingHeroes.util.CharacterSelectedMessage
 import io.github.slidingHeroes.util.Network
