@@ -6,7 +6,7 @@ import com.badlogic.gdx.math.Vector2
 import io.github.slidingHeroes.util.GyroMessage
 import io.github.slidingHeroes.util.PlayerInput
 
-class Hero(val scene: LevelScene) {
+open class Hero(val scene: LevelScene) {
     companion object{
         val baseSpeed: Float = 1000f
         val deacceleration: Float = 0.95f
@@ -19,7 +19,7 @@ class Hero(val scene: LevelScene) {
     var velocity: Vector2 = Vector2()
     private var gyro = GyroMessage()
 
-    fun draw(shape : ShapeRenderer) {
+    open fun draw(shape : ShapeRenderer) {
         val halfsize = size * 0.5f
         shape.color = Color.RED
         shape.rect(position.x-halfsize, position.y - halfsize, size, size )

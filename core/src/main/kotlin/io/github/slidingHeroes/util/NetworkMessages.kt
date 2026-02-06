@@ -1,6 +1,9 @@
 package io.github.slidingHeroes.util
 
 import com.esotericsoftware.kryo.Kryo
+import io.github.slidingHeroes.characters.heroes.HeroRecord
+
+class CharacterSelectedMessage(val heroIndex : Int = 0)
 
 interface PlayerInput
 class ButtonMessage(val pressed: Boolean = true) : PlayerInput
@@ -10,5 +13,7 @@ object Network {
     fun register(kryo: Kryo) {
         kryo.register(ButtonMessage::class.java)
         kryo.register(GyroMessage::class.java)
+        kryo.register(HeroRecord::class.java)
+        kryo.register(CharacterSelectedMessage::class.java)
     }
 }
