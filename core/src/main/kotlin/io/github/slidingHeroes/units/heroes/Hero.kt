@@ -1,11 +1,8 @@
 package io.github.slidingHeroes.units.heroes
 
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.math.Vector2
-import io.github.slidingHeroes.units.UnitStatus
 import io.github.slidingHeroes.server.LevelSpace
 import io.github.slidingHeroes.units.Unit
-import io.github.slidingHeroes.units.enemies.Enemy
 import io.github.slidingHeroes.util.GyroMessage
 import io.github.slidingHeroes.util.PlayerInput
 
@@ -19,7 +16,7 @@ abstract class Hero(levelSpace: LevelSpace) : Unit(levelSpace) {
         super.move(deltaTime)
     }
 
-    fun recieveInput(inp : PlayerInput)
+    fun receiveInput(inp : PlayerInput)
     {
         if (inp is GyroMessage)
             gyro = inp

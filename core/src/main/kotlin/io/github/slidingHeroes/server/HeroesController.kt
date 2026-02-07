@@ -1,6 +1,7 @@
 package io.github.slidingHeroes.server
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
+import com.badlogic.gdx.math.Vector2
 import io.github.slidingHeroes.units.heroes.SelectableHeroes
 import io.github.slidingHeroes.units.heroes.Hero
 import io.github.slidingHeroes.util.PlayerInput
@@ -19,17 +20,23 @@ class HeroesController {
 
     fun draw(shape: ShapeRenderer) {
         for (hero in heroes.values) {hero.draw(shape)}
-        for (hero in heroes.values) {hero.drawStatus(shape)}
     }
 
+    fun drawStatusBars(shape: ShapeRenderer) {
+
+        for (hero in heroes.values) {hero.drawStatus(shape)}
+    }
     fun update(deltaTime: Float) {
         for (hero in heroes.values) {hero.update(deltaTime)}
     }
 
     fun passInput(id: Int, inp : PlayerInput)
     {
-        heroes[id]?.recieveInput(inp)
+        heroes[id]?.receiveInput(inp)
     }
 
-    fun getHeroes() : MutableCollection<Hero> {return heroes.values}
+    fun closestTo(position : Vector2) : Hero?
+    {
+        return heroes.values.minByOrNull { it.position.dst2(position) }
+    }
 }

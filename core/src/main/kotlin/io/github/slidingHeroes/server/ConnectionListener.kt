@@ -16,7 +16,7 @@ class ConnectionListener (val gameApp : GameScene) : Listener {
         if (connection == null) {return}
         if (obj is PlayerInput) gameApp.heroes.passInput(connection.id, obj)
         if (obj is CharacterSelectedMessage)
-            gameApp.heroes.add(connection.id, obj.heroIndex, gameApp.scene)
+            gameApp.heroes.add(connection.id, obj.heroIndex, gameApp.levelSpace)
     }
     override fun disconnected(connection: Connection?) {
         if (connection == null) {return}
