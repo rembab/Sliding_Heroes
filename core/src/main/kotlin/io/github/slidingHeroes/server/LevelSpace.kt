@@ -20,6 +20,7 @@ class LevelSpace(val bottomLeft: Vector2, val topRight: Vector2) {
         position.x = min(topRight.x - radius, position.x)
         position.y = max(bottomLeft.y + radius, position.y)
         position.y = min(topRight.y - radius, position.y)
+
     }
 
 

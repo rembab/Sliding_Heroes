@@ -10,13 +10,13 @@ class EnemyDummy(levelSpace: LevelSpace, heroes : HeroesController) : Enemy(leve
     override fun draw(shape: ShapeRenderer)
     {
         val halfsize = size * 0.5f
-        shape.color = Color.RED
+        shape.color = Color.BLACK
         shape.circle(position.x, position.y, halfsize)
     }
     override fun move(deltaTime: Float) {
         val targetDirection = getTargetDirection()
         if (targetDirection!= null)
-            velocity.add(Vector2(targetDirection.x * deltaTime, targetDirection.y * deltaTime))
+            velocity.mulAdd(Vector2(targetDirection.x, targetDirection.y), baseSpeed*speed*deltaTime)
         super.move(deltaTime)
     }
 

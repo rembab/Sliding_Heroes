@@ -11,7 +11,7 @@ class EnemiesController {
 
     fun spawn(levelSpace: LevelSpace, heroes: HeroesController) {
         val dummy : Enemy = EnemyDummy(levelSpace, heroes)
-        dummy.position = levelSpace.middle
+        dummy.position = levelSpace.middle.cpy().mulAdd(Vector2(Random.nextFloat(), Random.nextFloat()), 10f)
         enemies.add(dummy)
     }
 

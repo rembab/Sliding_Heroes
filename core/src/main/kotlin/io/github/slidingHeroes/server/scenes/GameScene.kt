@@ -5,7 +5,6 @@ import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.utils.ScreenUtils
-import com.esotericsoftware.kryonet.Listener
 import com.esotericsoftware.kryonet.Server
 import io.github.slidingHeroes.server.ConnectionObserver
 import io.github.slidingHeroes.server.EnemiesController
@@ -13,6 +12,7 @@ import io.github.slidingHeroes.server.HeroesController
 import io.github.slidingHeroes.server.LevelSpace
 import io.github.slidingHeroes.server.ServerConnectionListener
 import io.github.slidingHeroes.util.NetworkMessage
+import io.github.slidingHeroes.util.Physics
 import io.github.slidingHeroes.util.PlayerInputMessage
 
 class GameScene(val server: Server,
@@ -22,13 +22,14 @@ class GameScene(val server: Server,
     var levelSpace : LevelSpace = LevelSpace(Vector2.Zero, screenSize)
     val enemies = EnemiesController()
     val heroes = HeroesController()
+    var spawnTimer = 1f
+    val spawnCd = 0.02f
 
     init {
         ServerConnectionListener.addObserver(this)
         for ((id, cl) in players) {
             heroes.add(id, cl, levelSpace)
         }
-        enemies.spawn(levelSpace, heroes)
     }
 
     override fun receiveMessage(id: Int, message: NetworkMessage) {
@@ -36,10 +37,15 @@ class GameScene(val server: Server,
     }
 
     override fun render(deltaTime: Float) {
+        spawnTimer -= deltaTime
+        if (spawnTimer <= 0f) {
+            enemies.spawn(levelSpace, heroes)
+            spawnTimer = spawnCd
+        }
         ScreenUtils.clear(Color.DARK_GRAY)
-
         updateUnits(deltaTime)
         drawUnits()
+        Physics.update(deltaTime)
     }
 
     fun updateUnits(deltaTime: Float)
@@ -55,7 +61,7 @@ class GameScene(val server: Server,
         heroes.draw(shape)
         enemies.draw(shape)
         heroes.drawStatusBars(shape)
-        enemies.drawStatusBars(shape)
+        //enemies.drawStatusBars(shape)
         shape.end()
     }
     override fun dispose() {

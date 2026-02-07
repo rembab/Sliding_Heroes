@@ -12,7 +12,7 @@ abstract class Hero(levelSpace: LevelSpace) : Unit(levelSpace) {
 
     override fun move(deltaTime: Float)
     {
-        velocity.add(Vector2(gyro.x * deltaTime, gyro.y * deltaTime))
+        velocity.mulAdd(Vector2(gyro.x, gyro.y), deltaTime*speed*baseSpeed)
         super.move(deltaTime)
     }
 

@@ -32,7 +32,7 @@ object ServerConnectionListener : Listener {
         if (connection == null) {return}
         try {
             if (obj is NetworkMessage) notifyObservers(connection.id, obj)
-            else throw IllegalArgumentException("Wrong network message object!!!")
+            else throw IllegalArgumentException("Wrong network message object: $obj")
         }
         catch (e: Exception) {println(e.message)}
 
