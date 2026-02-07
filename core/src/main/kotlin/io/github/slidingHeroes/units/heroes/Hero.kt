@@ -4,7 +4,7 @@ import com.badlogic.gdx.math.Vector2
 import io.github.slidingHeroes.server.LevelSpace
 import io.github.slidingHeroes.units.Unit
 import io.github.slidingHeroes.util.GyroMessage
-import io.github.slidingHeroes.util.PlayerInput
+import io.github.slidingHeroes.util.PlayerInputMessage
 
 abstract class Hero(levelSpace: LevelSpace) : Unit(levelSpace) {
 
@@ -16,7 +16,7 @@ abstract class Hero(levelSpace: LevelSpace) : Unit(levelSpace) {
         super.move(deltaTime)
     }
 
-    fun receiveInput(inp : PlayerInput)
+    fun receiveInput(inp : PlayerInputMessage)
     {
         if (inp is GyroMessage)
             gyro = inp

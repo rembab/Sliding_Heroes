@@ -5,29 +5,35 @@ import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.utils.ScreenUtils
+import com.esotericsoftware.kryonet.Listener
 import com.esotericsoftware.kryonet.Server
-import io.github.slidingHeroes.server.ConnectionListener
+import io.github.slidingHeroes.server.ConnectionObserver
 import io.github.slidingHeroes.server.EnemiesController
 import io.github.slidingHeroes.server.HeroesController
 import io.github.slidingHeroes.server.LevelSpace
-import io.github.slidingHeroes.util.Network
+import io.github.slidingHeroes.server.ServerConnectionListener
+import io.github.slidingHeroes.util.NetworkMessage
+import io.github.slidingHeroes.util.PlayerInputMessage
 
-class GameScene(screenSize : Vector2) : ScreenAdapter() {
-    private val server = Server()
+class GameScene(val server: Server,
+                screenSize : Vector2,
+                players : HashSet<Pair<Int, Int>>) : ScreenAdapter(), ConnectionObserver {
 
     var levelSpace : LevelSpace = LevelSpace(Vector2.Zero, screenSize)
-    val heroes = HeroesController()
     val enemies = EnemiesController()
+    val heroes = HeroesController()
 
     init {
-        Network.register(server.kryo)
-        server.start()
-        server.bind(54555, 54777)
-        server.addListener(ConnectionListener(this))
-
+        ServerConnectionListener.addObserver(this)
+        for ((id, cl) in players) {
+            heroes.add(id, cl, levelSpace)
+        }
         enemies.spawn(levelSpace, heroes)
     }
 
+    override fun receiveMessage(id: Int, message: NetworkMessage) {
+        if(message is PlayerInputMessage) {heroes.passInput(id, message)}
+    }
 
     override fun render(deltaTime: Float) {
         ScreenUtils.clear(Color.DARK_GRAY)
@@ -40,7 +46,6 @@ class GameScene(screenSize : Vector2) : ScreenAdapter() {
     {
         heroes.update(deltaTime)
         enemies.update(deltaTime)
-        enemies.resetTargets()
     }
 
     fun drawUnits()

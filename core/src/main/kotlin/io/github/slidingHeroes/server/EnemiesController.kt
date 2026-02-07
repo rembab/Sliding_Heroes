@@ -27,11 +27,8 @@ class EnemiesController {
 
     fun update(deltaTime : Float)
     {
+        for (e in enemies) e.resetTarget()
         for (e in enemies) e.update(deltaTime)
     }
 
-    fun resetTargets()
-    {
-        for (e in enemies) {e.resetTarget()}
-    }
 }
