@@ -7,11 +7,13 @@ import com.badlogic.gdx.math.Vector2
 import com.badlogic.gdx.utils.ScreenUtils
 import com.esotericsoftware.kryonet.Server
 import io.github.slidingHeroes.server.ConnectionObserver
-import io.github.slidingHeroes.server.EnemiesController
-import io.github.slidingHeroes.server.HeroesController
+import io.github.slidingHeroes.server.EnemiesModule
+import io.github.slidingHeroes.server.GameRenderer
+import io.github.slidingHeroes.server.HeroesModule
 import io.github.slidingHeroes.server.LevelSpace
 import io.github.slidingHeroes.server.ServerConnectionListener
-import io.github.slidingHeroes.util.ButtonMessage
+import io.github.slidingHeroes.server.UnitsModule
+import io.github.slidingHeroes.server.UpdateBus
 import io.github.slidingHeroes.util.CharacterSelectedMessage
 import io.github.slidingHeroes.util.NetworkMessage
 import io.github.slidingHeroes.util.Physics
@@ -23,10 +25,9 @@ class GameScene(val server: Server,
                 players : HashSet<Pair<Int, Int>>) : ScreenAdapter(), ConnectionObserver {
 
     var levelSpace : LevelSpace = LevelSpace(Vector2.Zero, screenSize)
-    val enemies = EnemiesController()
-    val heroes = HeroesController()
-    var spawnTimer = 1f
-    val spawnCd = 1f
+    val units = UnitsModule()
+    val heroes = HeroesModule()
+    val enemies = EnemiesModule(levelSpace, heroes)
 
     init {
         ServerConnectionListener.addObserver(this)
@@ -37,39 +38,25 @@ class GameScene(val server: Server,
 
     override fun receiveMessage(id: Int, message: NetworkMessage) {
         if(message is PlayerInputMessage) {heroes.passInput(id, message)}
-        if(message is PlayerDisconnectedMessage) {heroes.remove(id)}
         if(message is CharacterSelectedMessage) {heroes.add(id, message.heroIndex, levelSpace)}
+        if(message is PlayerDisconnectedMessage) {heroes.disconnected(id)}
     }
 
     override fun render(deltaTime: Float) {
-        spawnTimer -= deltaTime
-        if (spawnTimer <= 0f) {
-            enemies.spawn(levelSpace, heroes)
-            spawnTimer = spawnCd
-        }
         ScreenUtils.clear(Color.DARK_GRAY)
-        updateUnits(deltaTime)
+        UpdateBus.update(deltaTime)
         drawUnits()
-        Physics.update(deltaTime)
-    }
-
-    fun updateUnits(deltaTime: Float)
-    {
-        heroes.update(deltaTime)
-        enemies.update(deltaTime)
     }
 
     fun drawUnits()
     {
         val shape = ShapeRenderer()
         shape.begin(ShapeRenderer.ShapeType.Filled)
-        heroes.draw(shape)
-        enemies.draw(shape)
-        heroes.drawStatusBars(shape)
-        enemies.drawStatusBars(shape)
+        GameRenderer.draw(shape)
         shape.end()
     }
     override fun dispose() {
         server.stop()
+        ServerConnectionListener.removeObserver(this)
     }
 }

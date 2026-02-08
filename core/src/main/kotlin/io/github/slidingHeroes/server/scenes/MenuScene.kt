@@ -13,16 +13,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
 import com.badlogic.gdx.utils.ScreenUtils
 import com.badlogic.gdx.utils.viewport.ScreenViewport
-import com.esotericsoftware.kryonet.Client
 import com.esotericsoftware.kryonet.Server
-import com.sun.jdi.connect.spi.Connection
 import io.github.slidingHeroes.mobile.BasicSkin
-import io.github.slidingHeroes.mobile.scenes.CharacterSelectionScene
-import io.github.slidingHeroes.mobile.scenes.ControllerScene
 import io.github.slidingHeroes.server.ConnectionObserver
-import io.github.slidingHeroes.server.HeroesController
 import io.github.slidingHeroes.server.ServerConnectionListener
-import io.github.slidingHeroes.units.heroes.SelectableHeroes
 import io.github.slidingHeroes.util.CharacterSelectedMessage
 import io.github.slidingHeroes.util.Network
 import io.github.slidingHeroes.util.NetworkMessage

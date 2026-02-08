@@ -68,7 +68,6 @@ class FloatingJoystick(
         output.setZero()
         joystickDraggedMessage.x = 0f
         joystickDraggedMessage.y = 0f
-        client.sendUDP(joystickDraggedMessage)
         client.sendTCP(JoyStickReleasedMessage())
         return true
     }
