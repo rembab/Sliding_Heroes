@@ -25,10 +25,10 @@ class ProjectileAbility(unit : Unit, cooldown: Float, val proj: KClass<Projectil
 
     fun aim(direction : Vector2?)
     {
-        if (direction != null) aimDirection = direction
+        if (direction == null) aimDirection = direction
         if (cdTimer < 0f)
         {
-            aimDirection = direction!!.cpy()
+            aimDirection = direction?.cpy()
             if (automatic) use()
         }
         else aimDirection = null

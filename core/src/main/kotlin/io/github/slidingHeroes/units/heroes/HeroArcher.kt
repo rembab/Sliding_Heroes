@@ -45,8 +45,6 @@ class HeroArcher (levelSpace : LevelSpace, heroesModule: HeroesModule, ownerID: 
         if (inp is JoystickDraggedMessage)
         {
             arrowAbility.aim(Vector2(inp.x,inp.y))
-            println(arrowAbility.aimDirection.toString())
-            println(arrowAbility.cdTimer.toString())
         }
         if (inp is JoyStickReleasedMessage)
         {
