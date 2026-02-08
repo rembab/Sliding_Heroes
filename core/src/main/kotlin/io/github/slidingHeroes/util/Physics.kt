@@ -10,7 +10,7 @@ import kotlin.math.sqrt
 
 object Physics : Updatable {
     init {
-        UpdateBus.add(this)
+        startUpdate()
     }
     private val GRID_SIZE = 10f
     private val SEPARATION_SPEED = 4000f

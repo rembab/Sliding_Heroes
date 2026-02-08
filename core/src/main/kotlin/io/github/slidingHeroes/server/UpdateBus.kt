@@ -2,7 +2,17 @@ package io.github.slidingHeroes.server
 
 import io.github.slidingHeroes.units.Unit
 
-interface Updatable{ fun update(deltaTime: Float) }
+interface Updatable{
+    fun startUpdate()
+    {
+        UpdateBus.add(this)
+    }
+    fun update(deltaTime: Float)
+    fun stopUpdate()
+    {
+       UpdateBus.remove(this)
+    }
+}
 
 object UpdateBus {
     private val observers = HashSet<Updatable>()

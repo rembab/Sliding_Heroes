@@ -4,7 +4,7 @@ import io.github.slidingHeroes.units.Unit
 class UnitsModule : UnitEventObserver, Updatable {
     init{
         UnitEventListener.addObserver(this)
-        UpdateBus.add(this)
+        startUpdate()
     }
     private val units : ArrayList<Unit> = ArrayList()
 

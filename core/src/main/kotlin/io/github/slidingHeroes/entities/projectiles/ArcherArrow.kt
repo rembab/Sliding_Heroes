@@ -14,7 +14,7 @@ class ArcherArrow(
     position: Vector2,
     direction: Vector2,
     levelSpace: LevelSpace
-    ) : Projectile(position, direction, 1000f, levelSpace, arrayListOf(BodyTag.ENEMY)), Drawable {
+    ) : Projectile(position, direction, levelSpace, 1000f, arrayListOf(BodyTag.ENEMY)), Drawable {
 
     private val KNOCKBACK_FORCE = 1000f
     private val DAMAGE = 25f

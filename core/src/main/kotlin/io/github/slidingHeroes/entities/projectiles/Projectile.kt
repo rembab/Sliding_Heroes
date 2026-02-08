@@ -12,8 +12,8 @@ import io.github.slidingHeroes.util.RigidBody
 abstract class Projectile (
     pos: Vector2,
     direction: Vector2,
-    val speed : Float = 40f,
     val levelSpace: LevelSpace,
+    val speed : Float = 40f,
     val hittable : ArrayList<BodyTag>) : RigidBody(), Updatable, Drawable {
     val direction : Vector2 = direction.nor()
 
@@ -24,7 +24,7 @@ abstract class Projectile (
         overlapping = true
         size = 5f
         show()
-        UpdateBus.add(this)
+        startUpdate()
     }
 
     override fun update(deltaTime: Float)

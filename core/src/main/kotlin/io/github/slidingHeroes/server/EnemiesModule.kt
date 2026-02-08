@@ -7,7 +7,7 @@ import kotlin.random.Random
 
 class EnemiesModule(val levelSpace: LevelSpace, val heroes: HeroesModule) : Updatable{
     init {
-        UpdateBus.add(this)
+        startUpdate()
     }
     private val enemies : ArrayList<Enemy> = ArrayList()
     private val spawnCd = 2f
