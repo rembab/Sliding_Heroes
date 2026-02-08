@@ -17,6 +17,10 @@ abstract class Enemy(levelSpace: LevelSpace, val heroes: HeroesModule) : Unit(le
         resetTarget()
         addTag(BodyTag.ENEMY)
     }
+    override fun update(deltaTime: Float) {
+        resetTarget()
+        super.update(deltaTime)
+    }
     fun resetTarget()
     {
         target = heroes.closestTo(position)
