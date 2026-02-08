@@ -1,26 +1,12 @@
 package io.github.slidingHeroes.util
 
+import com.badlogic.gdx.math.Intersector
 import com.badlogic.gdx.math.MathUtils
 import com.badlogic.gdx.math.Vector2
 import io.github.slidingHeroes.units.heroes.Hero
+import kotlin.math.abs
 import kotlin.math.sqrt
 
-abstract class RigidBody
-{
-
-    var position: Vector2 = Vector2(0f,0f)
-        set(value) {
-            val prev = field.cpy()
-            field = value
-            Physics.updateBody(this, prev)
-        }
-    var velocity: Vector2 = Vector2(0f,0f)
-
-    var size: Float = 1f
-    init {
-        Physics.addBody(this)
-    }
-}
 
 abstract class RigidWall
 {
@@ -93,6 +79,52 @@ object Physics {
         return allCircle(pos, radius).minByOrNull { it.position.dst2(pos) }
     }
 
+    fun allRay(start: Vector2, end: Vector2): ArrayList<RigidBody> {
+        val result = ArrayList<RigidBody>()
+        val checkedBodies = HashSet<RigidBody>()
+
+        var x0 = MathUtils.floor(start.x / GRID_SIZE)
+        var y0 = MathUtils.floor(start.y / GRID_SIZE)
+        val x1 = MathUtils.floor(end.x / GRID_SIZE)
+        val y1 = MathUtils.floor(end.y / GRID_SIZE)
+
+        val dx = abs(x1 - x0)
+        val dy = abs(y1 - y0)
+
+        val stepX = if (x0 < x1) 1 else -1
+        val stepY = if (y0 < y1) 1 else -1
+
+        var error = dx - dy
+
+        while (true) {
+            val cellBodies = bodies[x0 to y0]
+
+            if (cellBodies != null) {
+                for (body in cellBodies) {
+                    if (checkedBodies.contains(body)) continue
+                    checkedBodies.add(body)
+
+                    val radius = body.size / 2f
+                    if (Intersector.intersectSegmentCircle(start, end, body.position, radius * radius)) {
+                        result.add(body)
+                    }
+                }
+            }
+
+            if (x0 == x1 && y0 == y1) break
+            val e2 = 2 * error
+            if (e2 > -dy) {
+                error -= dy
+                x0 += stepX
+            }
+            if (e2 < dx) {
+                error += dx
+                y0 += stepY
+            }
+        }
+
+        return result
+    }
 
     //this was clankered
     fun resolveCollisions(deltaTime: Float) {

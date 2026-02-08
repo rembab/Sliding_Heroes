@@ -24,7 +24,7 @@ abstract class Unit(val levelSpace: LevelSpace) : RigidBody() {
         status.drawStatusBar(shape, Vector2(0f,size).add(position))
     }
 
-    fun update(deltaTime: Float) {
+    open fun update(deltaTime: Float) {
         move(deltaTime)
     }
 
@@ -35,9 +35,8 @@ abstract class Unit(val levelSpace: LevelSpace) : RigidBody() {
         Physics.updateBody(this, oldpos)
     }
 
-    fun kill()
-    {
-        Physics.removeBody(this)
-    }
+    open fun damage(dmg:Float) {
+        status.hp -= dmg
 
+    }
 }

@@ -10,6 +10,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Label
 import com.badlogic.gdx.scenes.scene2d.ui.Skin
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton
 import com.badlogic.gdx.scenes.scene2d.ui.TextField
+import com.badlogic.gdx.scenes.scene2d.ui.Touchpad
 
 object BasicSkin : Skin()
 {
@@ -49,6 +50,28 @@ object BasicSkin : Skin()
         textFieldStyle.cursor = this.newDrawable("white", Color.RED)
         textFieldStyle.selection = this.newDrawable("white", Color.BLUE)
         this.add("default", textFieldStyle)
-
     }
 }
+
+object Joystick : Skin()
+{
+    init {
+
+        val bgPixmap = Pixmap(200, 200, Pixmap.Format.RGBA8888)
+        bgPixmap.setColor(Color.GRAY)
+        bgPixmap.fillCircle(100, 100, 100)
+        this.add("bg", Texture(bgPixmap))
+
+        val knobPixmap = Pixmap(100, 100, Pixmap.Format.RGBA8888)
+        knobPixmap.setColor(Color.LIGHT_GRAY)
+        knobPixmap.fillCircle(50, 50, 50)
+        this.add("knob", Texture(knobPixmap))
+
+        val touchpadStyle = Touchpad.TouchpadStyle()
+        touchpadStyle.background = this.getDrawable("bg")
+        touchpadStyle.knob = this.getDrawable("knob")
+
+        this.add("default", touchpadStyle)
+    }
+}
+

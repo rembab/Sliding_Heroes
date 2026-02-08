@@ -7,7 +7,6 @@ import io.github.slidingHeroes.util.GyroMessage
 import io.github.slidingHeroes.util.PlayerInputMessage
 
 abstract class Hero(levelSpace: LevelSpace) : Unit(levelSpace) {
-
     var gyro : GyroMessage = GyroMessage()
 
     override fun move(deltaTime: Float)
@@ -16,7 +15,7 @@ abstract class Hero(levelSpace: LevelSpace) : Unit(levelSpace) {
         super.move(deltaTime)
     }
 
-    fun receiveInput(inp : PlayerInputMessage)
+    open fun receiveInput(inp : PlayerInputMessage)
     {
         if (inp is GyroMessage)
             gyro = inp
