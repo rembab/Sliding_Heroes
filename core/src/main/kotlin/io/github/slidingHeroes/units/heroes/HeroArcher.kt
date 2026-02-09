@@ -6,16 +6,13 @@ import com.badlogic.gdx.math.Vector2
 import io.github.slidingHeroes.abilities.ProjectileAbility
 import io.github.slidingHeroes.entities.projectiles.ArcherArrow
 import io.github.slidingHeroes.entities.projectiles.Projectile
-import io.github.slidingHeroes.mobile.Joystick
 import io.github.slidingHeroes.server.HeroesModule
 import io.github.slidingHeroes.units.UnitStatus
 import io.github.slidingHeroes.server.LevelSpace
 import io.github.slidingHeroes.server.UpdateBus
-import io.github.slidingHeroes.units.enemies.Enemy
-import io.github.slidingHeroes.util.GyroMessage
-import io.github.slidingHeroes.util.JoyStickReleasedMessage
+import io.github.slidingHeroes.util.ButtonMessage
 import io.github.slidingHeroes.util.JoystickDraggedMessage
-import io.github.slidingHeroes.util.Physics
+import io.github.slidingHeroes.util.JoystickMessage
 import io.github.slidingHeroes.util.PlayerInputMessage
 import kotlin.reflect.KClass
 
@@ -24,6 +21,7 @@ class HeroArcher (levelSpace : LevelSpace, heroesModule: HeroesModule, ownerID: 
 ) {
     override val status: UnitStatus = UnitStatus(50f)
 
+    var testcolor = Color.GREEN
     val arrowAbility: ProjectileAbility =
         ProjectileAbility(
             this,
@@ -34,7 +32,7 @@ class HeroArcher (levelSpace : LevelSpace, heroesModule: HeroesModule, ownerID: 
     override fun draw(shape: ShapeRenderer)
     {
         val halfsize = size * 0.5f
-        shape.color = Color.GREEN
+        shape.color = testcolor
         shape.rect(position.x-halfsize, position.y - halfsize, size, size )
         if( arrowAbility.aimDirection!=null)
             shape.line(position, position.cpy().mulAdd(arrowAbility.aimDirection,200f))
@@ -46,10 +44,18 @@ class HeroArcher (levelSpace : LevelSpace, heroesModule: HeroesModule, ownerID: 
         {
             arrowAbility.aim(Vector2(inp.x,inp.y))
         }
-        if (inp is JoyStickReleasedMessage)
+        if (inp is JoystickMessage && !inp.pressed)
         {
             arrowAbility.use()
             arrowAbility.aim(null)
+        }
+        if (inp is ButtonMessage && inp.pressed)
+        {
+            testcolor = Color.BLUE
+        }
+        if (inp is ButtonMessage && !inp.pressed)
+        {
+            testcolor = Color.GREEN
         }
     }
 

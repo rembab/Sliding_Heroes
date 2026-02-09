@@ -47,7 +47,7 @@ class CharacterSelectionScene(val client : Client) : ScreenAdapter() {
                         try {
                             client.sendTCP(CharacterSelectedMessage(i))
                             Gdx.app.postRunnable {
-                                (Gdx.app.applicationListener as Game).setScreen(ControllerScene(client))
+                                (Gdx.app.applicationListener as Game).setScreen(ControllerScene(client, i))
                             }
                         } catch (e: Exception) {
                             e.printStackTrace()

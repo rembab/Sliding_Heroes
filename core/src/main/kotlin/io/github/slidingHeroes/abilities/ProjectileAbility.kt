@@ -1,13 +1,9 @@
 package io.github.slidingHeroes.abilities
 
 import com.badlogic.gdx.math.Vector2
-import io.github.slidingHeroes.entities.projectiles.ArcherArrow
-import io.github.slidingHeroes.entities.projectiles.EnemyProjectile
-import io.github.slidingHeroes.entities.projectiles.HeroProjectile
 import io.github.slidingHeroes.entities.projectiles.Projectile
 import io.github.slidingHeroes.units.Unit
 import kotlin.reflect.KClass
-import kotlin.reflect.full.isSubclassOf
 
 class ProjectileAbility(unit : Unit, cooldown: Float, val proj: KClass<Projectile>, val automatic: Boolean = false)
     : Ability(unit, cooldown) {

@@ -4,9 +4,7 @@ import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.math.Vector2
 import io.github.slidingHeroes.onHitEffects.OnHitDamage
-import io.github.slidingHeroes.onHitEffects.OnHitEffect
 import io.github.slidingHeroes.server.Drawable
-import io.github.slidingHeroes.server.LevelSpace
 import io.github.slidingHeroes.units.heroes.Hero
 import io.github.slidingHeroes.util.RigidBody
 import io.github.slidingHeroes.units.Unit

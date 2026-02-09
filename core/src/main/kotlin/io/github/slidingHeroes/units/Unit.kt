@@ -33,21 +33,24 @@ abstract class Unit(val levelSpace: LevelSpace, ) : RigidBody(), Drawable {
     }
 
     open fun move(deltaTime: Float) {
-        velocity.scl(deacceleration)
-        val oldpos = position.cpy()
-        levelSpace.keepInBounds(position, size/2)
-        Physics.updateBody(this, oldpos)
+        if (!status.rooted) {
+            velocity.scl(deacceleration)
+            val oldpos = position.cpy()
+            levelSpace.keepInBounds(position, size / 2)
+            Physics.updateBody(this, oldpos)
+        } else velocity.scl(0.8f)
     }
 
-    open fun damage(dmg:Float) {
-        status.hp -= dmg
-    }
+    open fun damage(dmg:Float) { status.damage(dmg) }
+    open fun stun(dur:Float) { status.stun(dur) }
+    open fun root(dur:Float) { status.root(dur) }
 
     open fun die()
     {
         Physics.remove(this)
         hide()
         statusBar.hide()
+        status.stopUpdate()
         UnitEventListener.passEvent(this, UnitEvent.DIED)
     }
 }

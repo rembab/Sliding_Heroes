@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.math.Vector2
 import io.github.slidingHeroes.abilities.ProjectileAbility
-import io.github.slidingHeroes.entities.projectiles.ArcherArrow
 import io.github.slidingHeroes.entities.projectiles.EnemyArrow
 import io.github.slidingHeroes.entities.projectiles.Projectile
 import io.github.slidingHeroes.server.HeroesModule
