@@ -1,7 +1,6 @@
 package io.github.slidingHeroes.server
 
-import io.github.slidingHeroes.units.heroes.Hero
-import io.github.slidingHeroes.units.Unit
+import io.github.slidingHeroes.world.units.Unit
 enum class UnitEvent {DIED, SPAWNED}
 
 interface UnitEventObserver { fun receiveUnitEvent(unit: Unit, event : UnitEvent) }

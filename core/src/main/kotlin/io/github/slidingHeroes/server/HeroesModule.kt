@@ -1,9 +1,8 @@
 package io.github.slidingHeroes.server
 
 import com.badlogic.gdx.math.Vector2
-import io.github.slidingHeroes.units.Unit
-import io.github.slidingHeroes.units.heroes.SelectableHeroes
-import io.github.slidingHeroes.units.heroes.Hero
+import io.github.slidingHeroes.world.units.heroes.SelectableHeroes
+import io.github.slidingHeroes.world.units.heroes.Hero
 import io.github.slidingHeroes.util.PlayerInputMessage
 
 class HeroesModule {

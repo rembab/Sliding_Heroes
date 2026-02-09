@@ -1,6 +1,6 @@
 package io.github.slidingHeroes.server
 
-import io.github.slidingHeroes.units.Unit
+import io.github.slidingHeroes.world.units.Unit
 
 interface Updatable{
     fun startUpdate()

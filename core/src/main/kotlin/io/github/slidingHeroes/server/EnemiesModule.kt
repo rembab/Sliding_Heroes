@@ -1,9 +1,8 @@
 package io.github.slidingHeroes.server
 
 import com.badlogic.gdx.math.Vector2
-import io.github.slidingHeroes.units.enemies.Enemy
-import io.github.slidingHeroes.units.enemies.EnemyArcher
-import io.github.slidingHeroes.units.enemies.EnemyDummy
+import io.github.slidingHeroes.world.units.enemies.Enemy
+import io.github.slidingHeroes.world.units.enemies.EnemyArcher
 import kotlin.random.Random
 
 class EnemiesModule(val levelSpace: LevelSpace, val heroes: HeroesModule) : Updatable{

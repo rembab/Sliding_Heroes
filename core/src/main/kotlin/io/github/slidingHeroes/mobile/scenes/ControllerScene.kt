@@ -6,16 +6,10 @@ import com.badlogic.gdx.InputMultiplexer
 import com.badlogic.gdx.ScreenAdapter
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
-import com.badlogic.gdx.scenes.scene2d.Stage
-import com.badlogic.gdx.scenes.scene2d.ui.Touchpad
 import com.badlogic.gdx.utils.ScreenUtils
-import com.badlogic.gdx.utils.viewport.ScreenViewport
 import com.esotericsoftware.kryonet.Client
-import io.github.slidingHeroes.mobile.controls.FloatingJoystick
-import io.github.slidingHeroes.mobile.Joystick
 import io.github.slidingHeroes.mobile.controls.MobileControl
-import io.github.slidingHeroes.units.heroes.SelectableHeroes
-import io.github.slidingHeroes.util.ButtonMessage
+import io.github.slidingHeroes.world.units.heroes.SelectableHeroes
 import io.github.slidingHeroes.util.GyroMessage
 
 class ControllerScene (val client : Client, val heroIndex: Int) : ScreenAdapter() {

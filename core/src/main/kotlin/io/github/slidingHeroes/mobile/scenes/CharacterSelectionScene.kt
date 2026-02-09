@@ -13,7 +13,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.ClickListener
 import com.badlogic.gdx.utils.ScreenUtils
 import com.badlogic.gdx.utils.viewport.ScreenViewport
 import com.esotericsoftware.kryonet.Client
-import io.github.slidingHeroes.units.heroes.SelectableHeroes
+import io.github.slidingHeroes.world.units.heroes.SelectableHeroes
 import io.github.slidingHeroes.mobile.BasicSkin
 import io.github.slidingHeroes.util.CharacterSelectedMessage
 import io.github.slidingHeroes.util.Network

@@ -8,15 +8,15 @@ import com.badlogic.gdx.utils.ScreenUtils
 import com.esotericsoftware.kryonet.Server
 import io.github.slidingHeroes.server.ConnectionObserver
 import io.github.slidingHeroes.server.EnemiesModule
-import io.github.slidingHeroes.server.GameRenderer
+import io.github.slidingHeroes.server.rendering.DrawingBus
 import io.github.slidingHeroes.server.HeroesModule
 import io.github.slidingHeroes.server.LevelSpace
 import io.github.slidingHeroes.server.ServerConnectionListener
 import io.github.slidingHeroes.server.UnitsModule
 import io.github.slidingHeroes.server.UpdateBus
+import io.github.slidingHeroes.server.rendering.Renderer
 import io.github.slidingHeroes.util.CharacterSelectedMessage
 import io.github.slidingHeroes.util.NetworkMessage
-import io.github.slidingHeroes.util.Physics
 import io.github.slidingHeroes.util.PlayerDisconnectedMessage
 import io.github.slidingHeroes.util.PlayerInputMessage
 
@@ -50,10 +50,10 @@ class GameScene(val server: Server,
 
     fun drawUnits()
     {
-        val shape = ShapeRenderer()
-        shape.begin(ShapeRenderer.ShapeType.Filled)
-        GameRenderer.draw(shape)
-        shape.end()
+        val rend = Renderer()
+        rend.begin()
+        DrawingBus.draw(rend)
+        rend.end()
     }
     override fun dispose() {
         server.stop()
