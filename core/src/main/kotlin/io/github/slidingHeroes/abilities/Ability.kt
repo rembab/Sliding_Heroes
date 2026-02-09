@@ -4,6 +4,7 @@ import io.github.slidingHeroes.server.Updatable
 import io.github.slidingHeroes.units.Unit
 
 abstract class Ability(val unit : Unit, val cooldown: Float) : Updatable {
+
     init {
         startUpdate()
     }

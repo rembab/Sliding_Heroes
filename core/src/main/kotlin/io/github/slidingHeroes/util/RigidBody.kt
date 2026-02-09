@@ -27,4 +27,6 @@ abstract class RigidBody
     fun addTag(tag: BodyTag) {tags.add(tag)}
 
     open fun collideWith(other: RigidBody) {}
+
+
 }

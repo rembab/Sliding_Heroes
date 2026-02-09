@@ -13,8 +13,9 @@ abstract class Projectile (
     pos: Vector2,
     direction: Vector2,
     val levelSpace: LevelSpace,
-    val speed : Float = 40f,
-    val hittable : ArrayList<BodyTag>) : RigidBody(), Updatable, Drawable {
+    val speed: Float,
+    val hittable: ArrayList<BodyTag>
+) : RigidBody(), Updatable, Drawable {
     val direction : Vector2 = direction.nor()
 
     var prevPos : Vector2 = position

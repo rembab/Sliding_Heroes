@@ -3,20 +3,22 @@ package io.github.slidingHeroes.entities.projectiles
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.math.Vector2
+import io.github.slidingHeroes.onHitEffects.OnHitDamage
+import io.github.slidingHeroes.onHitEffects.OnHitEffect
 import io.github.slidingHeroes.server.Drawable
 import io.github.slidingHeroes.server.LevelSpace
-import io.github.slidingHeroes.units.enemies.Enemy
 import io.github.slidingHeroes.units.heroes.Hero
-import io.github.slidingHeroes.util.BodyTag
 import io.github.slidingHeroes.util.RigidBody
+import io.github.slidingHeroes.units.Unit
 
 class EnemyArrow(
     position: Vector2,
     direction: Vector2,
-    levelSpace: LevelSpace
-) : Projectile(position, direction, levelSpace, 500f, arrayListOf(BodyTag.HERO)), Drawable {
+    unit: Unit,
+) : EnemyProjectile(position, direction, 500f, unit,
+    arrayListOf(OnHitDamage(DAMAGE))), Drawable {
 
-    private val DAMAGE = 5f
+    companion object {private val DAMAGE = 5f}
 
     override fun hit(body: RigidBody) {
         if (body !is Hero) return
