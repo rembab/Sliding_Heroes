@@ -15,6 +15,7 @@ import io.github.slidingHeroes.util.ButtonMessage
 import io.github.slidingHeroes.util.JoystickDraggedMessage
 import io.github.slidingHeroes.util.JoystickMessage
 import io.github.slidingHeroes.util.PlayerInputMessage
+import io.github.slidingHeroes.vfx.VfxAttackChargeUp
 import kotlin.reflect.KClass
 
 class HeroArcher (levelSpace : LevelSpace, heroesModule: HeroesModule, ownerID: Int) :
@@ -52,6 +53,7 @@ class HeroArcher (levelSpace : LevelSpace, heroesModule: HeroesModule, ownerID: 
         }
         if (inp is ButtonMessage && inp.pressed)
         {
+            VfxAttackChargeUp(arrowAbility.aimReticle)
             testcolor = Color.BLUE
         }
         if (inp is ButtonMessage && !inp.pressed)

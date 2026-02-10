@@ -9,6 +9,7 @@ import io.github.slidingHeroes.world.entities.projectiles.Projectile
 import io.github.slidingHeroes.server.HeroesModule
 import io.github.slidingHeroes.server.LevelSpace
 import io.github.slidingHeroes.server.rendering.Renderer
+import io.github.slidingHeroes.server.rendering.outlineCircle
 import io.github.slidingHeroes.world.units.UnitStatus
 import kotlin.math.abs
 import kotlin.reflect.KClass
@@ -28,7 +29,7 @@ class EnemyArcher(levelSpace: LevelSpace, heroes: HeroesModule) : Enemy(levelSpa
             true)
 
     override fun update(deltaTime: Float) {
-        arrowAbility.aim(getTargetDirection())
+        //arrowAbility.aim(getTargetDirection())
         super.update(deltaTime)
     }
 
@@ -49,7 +50,6 @@ class EnemyArcher(levelSpace: LevelSpace, heroes: HeroesModule) : Enemy(levelSpa
         val halfsize = size * 0.5f
         rend.shape.color = Color.BLACK
         rend.shape.circle(position.x, position.y, halfsize)
-
         val lookdir : Vector2 = if(getTargetDirection() != null) getTargetDirection()!! else Vector2.One
         val tmp = position.cpy().mulAdd(lookdir,20f)
 

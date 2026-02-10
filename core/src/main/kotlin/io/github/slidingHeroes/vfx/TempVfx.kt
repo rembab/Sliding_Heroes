@@ -1,12 +1,13 @@
 package io.github.slidingHeroes.vfx
 
+import com.badlogic.gdx.math.Vector2
 import io.github.slidingHeroes.server.rendering.Drawable
 import io.github.slidingHeroes.server.Updatable
 
-abstract class TempVfx(val duration : Float) : Updatable, Drawable {
-    var timer  = 0f
-    val timeRatio
-        get() = if (duration == 0f) 0 else timer / duration
+abstract class TempVfx(val position : Vector2, val duration : Float) : Updatable, Drawable {
+    var timer : Float = duration
+    val timeRatio : Float
+        get() = if (duration == 0f) 0f else timer / duration
 
 
     init {

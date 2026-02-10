@@ -8,9 +8,11 @@ import kotlin.reflect.KClass
 class ProjectileAbility(unit : Unit, cooldown: Float, val proj: KClass<Projectile>, val automatic: Boolean = false)
     : Ability(unit, cooldown) {
 
+    private val RETICLE_DIST = 10f
     var aimDirection : Vector2? = null
         private set
 
+    val aimReticle : Vector2 = Vector2.Zero.cpy()
 
     override fun canUse() : Boolean {
         return super.canUse() && aimDirection != null
@@ -24,10 +26,16 @@ class ProjectileAbility(unit : Unit, cooldown: Float, val proj: KClass<Projectil
 
     fun aim(direction : Vector2?)
     {
-        if (direction == null) aimDirection = direction
+        if (direction == null)
+        {
+            aimDirection = direction
+        }
         if (cdTimer < 0f)
         {
             aimDirection = direction?.cpy()
+            val vec = unit.position.cpy().mulAdd(direction, unit.size+RETICLE_DIST)
+            aimReticle.x = vec.x
+            aimReticle.y = vec.y
             if (automatic) use()
         }
         else aimDirection = null
