@@ -10,7 +10,9 @@ import io.github.slidingHeroes.util.BodyTag
 import io.github.slidingHeroes.util.Physics
 import io.github.slidingHeroes.util.RigidBody
 
-
+/**
+ * Anything to be considered a unit mid game. Enemies, players summons and such.
+ */
 abstract class Unit(val levelSpace: LevelSpace, ) : RigidBody(), Drawable {
     companion object{
         val baseSpeed: Float = 1000f

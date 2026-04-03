@@ -2,6 +2,9 @@ package io.github.slidingHeroes.server.rendering
 
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 
+/**
+ * draws all subscribed objects every frame. Using the specified renderer
+ */
 object DrawingBus {
     private val observers = HashMap<Drawable, Int>()
 

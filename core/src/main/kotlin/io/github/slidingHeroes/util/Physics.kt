@@ -8,6 +8,14 @@ import io.github.slidingHeroes.server.UpdateBus
 import kotlin.math.abs
 import kotlin.math.sqrt
 
+/**
+ * the physics engine superclass
+ * resolves movement, collisions and allows for detecting bodies within an area
+ * has a hashmap representing hashes with bodies in them
+ * I chose this approach so that any action interacting with the engine has O(1) complexity
+ * the above time complexity holds as long as the body density is not too large
+ * todo: interaction with the LevelSpace -> walls and boundaries as immovable objects
+ */
 object Physics : Updatable {
     init {
         startUpdate()
@@ -15,9 +23,9 @@ object Physics : Updatable {
     private val GRID_SIZE = 10f
     private val SEPARATION_SPEED = 4000f
 
-    val bodies = HashMap<Pair<Int, Int>, HashSet<RigidBody>>()
-    val toRemove = mutableListOf<RigidBody>()
-    val toAdd = mutableListOf<RigidBody>()
+    private val bodies = HashMap<Pair<Int, Int>, HashSet<RigidBody>>()
+    private val toRemove = mutableListOf<RigidBody>()
+    private val toAdd = mutableListOf<RigidBody>()
 
     private fun getOccupiedCells(pos: Vector2, size: Float): List<Pair<Int, Int>> {
         val radius = size / 2f
@@ -146,7 +154,7 @@ object Physics : Updatable {
         }
         return result
     }
-    //this was clankered
+    // handles collisions between bodies, and bounces them back
     fun resolveCollisions(deltaTime: Float) {
         val allBodies = bodies.values.flatten().distinct()
 

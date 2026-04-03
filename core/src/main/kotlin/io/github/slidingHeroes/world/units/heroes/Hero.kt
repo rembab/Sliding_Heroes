@@ -8,12 +8,15 @@ import io.github.slidingHeroes.util.BodyTag
 import io.github.slidingHeroes.util.GyroMessage
 import io.github.slidingHeroes.util.PlayerInputMessage
 
+/**
+ * player controlled hero class
+ */
 abstract class Hero(levelSpace: LevelSpace, val heroesModule: HeroesModule, val ownerID : Int
 ) : Unit(levelSpace) {
     init {
         addTag(BodyTag.HERO)
     }
-    var gyro : GyroMessage = GyroMessage()
+    private var gyro : GyroMessage = GyroMessage() // gyro input for movement
 
     override fun move(deltaTime: Float)
     {

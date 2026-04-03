@@ -12,6 +12,9 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton
 import com.badlogic.gdx.scenes.scene2d.ui.TextField
 import com.badlogic.gdx.scenes.scene2d.ui.Touchpad
 
+/**
+ * just a basic ui style
+ */
 object BasicSkin : Skin()
 {
     init {
@@ -53,6 +56,9 @@ object BasicSkin : Skin()
     }
 }
 
+/**
+ * joystick skin for mobile
+ */
 object Joystick : Skin()
 {
     init {

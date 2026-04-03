@@ -10,6 +10,9 @@ import io.github.slidingHeroes.world.units.UnitStatus
 import io.github.slidingHeroes.world.units.heroes.Hero
 import io.github.slidingHeroes.util.RigidBody
 
+/**
+ * a basic enemy that slowly moves towards the player and deals damage on contact
+ */
 class EnemyDummy(levelSpace: LevelSpace, heroes : HeroesModule) : Enemy(levelSpace, heroes) {
     override val status: UnitStatus = UnitStatus(50f)
     private val CONTACT_DAMAGE = 10f

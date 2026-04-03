@@ -5,13 +5,14 @@ import io.github.slidingHeroes.mobile.controls.FloatingJoystick
 import io.github.slidingHeroes.mobile.controls.MobileControl
 import kotlin.reflect.KClass
 
+// record describing a single selectable hero class
 data class HeroRecord(val prefab: KClass<Hero>,
                       val name: String,
                       val description: String,
                       val controlLeft: KClass<MobileControl>,
                       val controlRight: KClass<MobileControl>)
 
-
+// a global list of selectable heroes
 object SelectableHeroes : ArrayList<HeroRecord>(){
     private fun readResolve(): Any = SelectableHeroes
 

@@ -4,6 +4,9 @@ import com.badlogic.gdx.math.Vector2
 import kotlin.math.max
 import kotlin.math.min
 
+/**
+ * responsible for geometry of the current level - for now only bounds.
+ */
 class LevelSpace(val bottomLeft: Vector2, val topRight: Vector2) {
     val middle : Vector2 get() {
         return Vector2(bottomLeft.x + topRight.x, topRight.y + bottomLeft.y).scl(0.5f)

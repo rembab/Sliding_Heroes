@@ -5,6 +5,11 @@ import io.github.slidingHeroes.world.units.enemies.Enemy
 import io.github.slidingHeroes.world.units.enemies.EnemyArcher
 import kotlin.random.Random
 
+/**
+ * module handling the spawning of enemies.
+ * for now this is mostly a placeholder that keeps spawning enemies in the middle of the map
+ * more complex and engaging combat and spawning enemies will be implemented later in development
+ */
 class EnemiesModule(val levelSpace: LevelSpace, val heroes: HeroesModule) : Updatable{
     init {
         startUpdate()

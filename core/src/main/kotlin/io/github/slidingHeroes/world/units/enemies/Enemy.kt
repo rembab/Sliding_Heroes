@@ -7,6 +7,10 @@ import io.github.slidingHeroes.world.units.Unit
 import io.github.slidingHeroes.world.units.heroes.Hero
 import io.github.slidingHeroes.util.BodyTag
 
+/**
+ * enemy class
+ * handles targeting of heroes
+ */
 abstract class Enemy(levelSpace: LevelSpace, val heroes: HeroesModule) : Unit(levelSpace) {
     var target: Hero? = null
     fun getTargetDirection() : Vector2? = target?.position?.cpy()?.sub(position)?.nor()

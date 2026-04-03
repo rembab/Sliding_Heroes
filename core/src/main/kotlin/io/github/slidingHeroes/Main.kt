@@ -1,4 +1,4 @@
-package io.github.slidingHeroes // Make sure this matches your package!
+package io.github.slidingHeroes
 
 import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.Application.ApplicationType

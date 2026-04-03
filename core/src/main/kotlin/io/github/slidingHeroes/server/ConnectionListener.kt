@@ -6,7 +6,9 @@ import io.github.slidingHeroes.util.NetworkMessage
 import io.github.slidingHeroes.util.PlayerConnectedMessage
 import io.github.slidingHeroes.util.PlayerDisconnectedMessage
 
-
+/**
+ * Handles receiving messages through the network.
+ */
 interface ConnectionObserver
 {
     fun receiveMessage(id : Int, message: NetworkMessage)

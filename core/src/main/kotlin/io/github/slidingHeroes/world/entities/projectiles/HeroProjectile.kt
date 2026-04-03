@@ -7,6 +7,9 @@ import io.github.slidingHeroes.world.units.enemies.Enemy
 import io.github.slidingHeroes.util.BodyTag
 import io.github.slidingHeroes.util.RigidBody
 
+/**
+ * a projectile originating from a hero and hitting an enemy
+ */
 abstract class HeroProjectile(pos: Vector2, direction: Vector2, speed : Float, val unit: Unit,  val onHits : ArrayList<OnHitEffect>) :
     Projectile(pos, direction, unit.levelSpace, speed, arrayListOf(BodyTag.ENEMY)){
     override fun hit(body: RigidBody) {

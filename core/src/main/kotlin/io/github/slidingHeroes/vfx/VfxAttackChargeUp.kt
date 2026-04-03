@@ -7,6 +7,10 @@ import com.sun.source.util.SourcePositions
 import io.github.slidingHeroes.server.rendering.Renderer
 import io.github.slidingHeroes.server.rendering.outlineCircle
 
+/**
+ * a circle that gets smaller and eventually disappears.
+ * intention: use when a unit executes an ability that triggers after the charge up period (like shooting a bow)
+ */
 class VfxAttackChargeUp(position: Vector2,
                         duration : Float = 0.5f,
                         val color : Color = Color.WHITE,
