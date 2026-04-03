@@ -5,6 +5,12 @@ import io.github.slidingHeroes.world.entities.projectiles.Projectile
 import io.github.slidingHeroes.world.units.Unit
 import kotlin.reflect.KClass
 
+/**
+ * an ability of a unit to shoot a projectile
+ * only exported function is 'aim', which does following:
+ * if its not on cooldown, fires its associated projectile
+ * otherwise, aims, producing an aim direction and a relative position of the reticle
+ */
 class ProjectileAbility(unit : Unit, cooldown: Float, val proj: KClass<Projectile>, val automatic: Boolean = false)
     : Ability(unit, cooldown) {
 

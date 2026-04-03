@@ -9,6 +9,9 @@ import com.esotericsoftware.kryonet.Client
 import io.github.slidingHeroes.util.JoystickDraggedMessage
 import io.github.slidingHeroes.util.JoystickMessage
 
+/**
+ * a floating joystick controller
+ */
 class FloatingJoystick(
     client: Client,
     inputId: Int = 0,

@@ -24,6 +24,10 @@ import io.github.slidingHeroes.util.PlayerConnectedMessage
 import io.github.slidingHeroes.util.PlayerDisconnectedMessage
 import kotlin.concurrent.thread
 
+/**
+ * waiting for connection initial scene
+ * also creates the server
+ */
 class MenuScene(screenSize : Vector2) : ScreenAdapter(), ConnectionObserver {
     private val server: Server = Server()
     private val stage = Stage(ScreenViewport())

@@ -14,6 +14,9 @@ import io.github.slidingHeroes.world.units.UnitStatus
 import kotlin.math.abs
 import kotlin.reflect.KClass
 
+/**
+ * an enemy archer that keeps distance from the player and attacks from range using their bow
+ */
 class EnemyArcher(levelSpace: LevelSpace, heroes: HeroesModule) : Enemy(levelSpace, heroes) {
     private val DESIRED_DISTANCE = 300f
     private val DISTANCE_MARGIN = 50f
@@ -29,7 +32,7 @@ class EnemyArcher(levelSpace: LevelSpace, heroes: HeroesModule) : Enemy(levelSpa
             true)
 
     override fun update(deltaTime: Float) {
-        //arrowAbility.aim(getTargetDirection())
+        arrowAbility.aim(getTargetDirection())
         super.update(deltaTime)
     }
 

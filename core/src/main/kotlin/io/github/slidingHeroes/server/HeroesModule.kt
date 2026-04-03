@@ -5,6 +5,11 @@ import io.github.slidingHeroes.world.units.heroes.SelectableHeroes
 import io.github.slidingHeroes.world.units.heroes.Hero
 import io.github.slidingHeroes.util.PlayerInputMessage
 
+/**
+ * the game module responsible to handling events related to players
+ * player joining, resolving disconnection and passing correct inputs to player heroes
+ * also used by the enemy class for targeting, this feature will probably be moved to physics later down the line
+ */
 class HeroesModule {
     private val heroes = HashMap<Int, Hero>()
 

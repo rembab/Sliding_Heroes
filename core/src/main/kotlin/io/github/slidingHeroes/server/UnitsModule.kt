@@ -1,6 +1,11 @@
 package io.github.slidingHeroes.server
 
 import io.github.slidingHeroes.world.units.Unit
+
+/**
+ * main game module responsible for handling units - spawning, updating them and removing dead ones
+ * also resolving any effects that happen when the above occur
+ */
 class UnitsModule : UnitEventObserver, Updatable {
     init{
         UnitEventListener.addObserver(this)
@@ -25,7 +30,6 @@ class UnitsModule : UnitEventObserver, Updatable {
         when(event) {
             UnitEvent.DIED -> deadUnits.add(unit)
             UnitEvent.SPAWNED -> add(unit)
-            else -> {}
         }
     }
 }

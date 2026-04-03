@@ -20,6 +20,9 @@ import io.github.slidingHeroes.util.NetworkMessage
 import io.github.slidingHeroes.util.PlayerDisconnectedMessage
 import io.github.slidingHeroes.util.PlayerInputMessage
 
+/**
+ * main game scene where enemies and players fight
+ */
 class GameScene(val server: Server,
                 screenSize : Vector2,
                 players : HashSet<Pair<Int, Int>>) : ScreenAdapter(), ConnectionObserver {

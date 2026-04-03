@@ -1,7 +1,7 @@
 package io.github.slidingHeroes.server
 
 import io.github.slidingHeroes.world.units.Unit
-
+// anything that performs an update every frame
 interface Updatable{
     fun startUpdate()
     {
@@ -13,7 +13,7 @@ interface Updatable{
        UpdateBus.remove(this)
     }
 }
-
+// global bus object calling update every frame on any registered updatable object
 object UpdateBus {
     private val observers = HashSet<Updatable>()
     private val toRemove = HashSet<Updatable>()

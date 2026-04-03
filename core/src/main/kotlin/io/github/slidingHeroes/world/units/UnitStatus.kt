@@ -7,6 +7,10 @@ import io.github.slidingHeroes.server.Updatable
 import kotlin.math.max
 import kotlin.math.min
 
+/**
+ * Describes the status of a unit, such as their health, various buffs or debuffs
+ * During its update manages those debuffs and other status effects.
+ */
 class UnitStatus(var maxHp : Float = 1f) : Updatable {
 
     init {
@@ -18,11 +22,11 @@ class UnitStatus(var maxHp : Float = 1f) : Updatable {
             field = min(value, maxHp)
         }
 
-    var stunTime = 0f
+    private var stunTime = 0f
     val stunned : Boolean
         get() = stunTime > 0f
 
-    var rootTime = 0f
+    private var rootTime = 0f
     val rooted: Boolean
         get() = stunned || rootTime > 0f
     fun hpRatio() : Float = hp/maxHp

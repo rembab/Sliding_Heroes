@@ -10,6 +10,9 @@ import io.github.slidingHeroes.world.units.heroes.Hero
 import io.github.slidingHeroes.util.RigidBody
 import io.github.slidingHeroes.world.units.Unit
 
+/**
+ * an enemy arrow projectile hitting players and dealing a set mnumber of damage
+ */
 class EnemyArrow(
     position: Vector2,
     direction: Vector2,

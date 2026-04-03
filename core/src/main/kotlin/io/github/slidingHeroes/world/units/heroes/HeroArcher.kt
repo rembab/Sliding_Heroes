@@ -17,14 +17,17 @@ import io.github.slidingHeroes.util.JoystickMessage
 import io.github.slidingHeroes.util.PlayerInputMessage
 import io.github.slidingHeroes.vfx.VfxAttackChargeUp
 import kotlin.reflect.KClass
-
+/**
+ * archer hero class
+ * todo: second ability (sprinting while shooting arrows?)
+ */
 class HeroArcher (levelSpace : LevelSpace, heroesModule: HeroesModule, ownerID: Int) :
     Hero(levelSpace, heroesModule, ownerID
 ) {
     override val status: UnitStatus = UnitStatus(50f)
 
-    var testcolor = Color.GREEN
-    val arrowAbility: ProjectileAbility =
+    private var TESTCOLOR = Color.GREEN
+    private val arrowAbility: ProjectileAbility =
         ProjectileAbility(
             this,
             0.5f,
@@ -34,7 +37,7 @@ class HeroArcher (levelSpace : LevelSpace, heroesModule: HeroesModule, ownerID: 
     override fun draw(rend: Renderer)
     {
         val halfsize = size * 0.5f
-        rend.shape.color = testcolor
+        rend.shape.color = TESTCOLOR
         rend.shape.rect(position.x-halfsize, position.y - halfsize, size, size )
         if( arrowAbility.aimDirection!=null)
             rend.shape.line(position, position.cpy().mulAdd(arrowAbility.aimDirection,200f))
@@ -53,12 +56,12 @@ class HeroArcher (levelSpace : LevelSpace, heroesModule: HeroesModule, ownerID: 
         }
         if (inp is ButtonMessage && inp.pressed)
         {
-            VfxAttackChargeUp(arrowAbility.aimReticle)
-            testcolor = Color.BLUE
+            //VfxAttackChargeUp(arrowAbility.aimReticle)
+            TESTCOLOR = Color.BLUE
         }
         if (inp is ButtonMessage && !inp.pressed)
         {
-            testcolor = Color.GREEN
+            TESTCOLOR = Color.GREEN
         }
     }
 

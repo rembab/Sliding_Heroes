@@ -5,7 +5,10 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.math.Vector2
 import io.github.slidingHeroes.server.rendering.Drawable
 import io.github.slidingHeroes.server.rendering.Renderer
-
+/**
+ * the hp bar floating above a unit showing its health
+ * todo: showing debuffs, stuns etc
+ */
 class StatusBar(val unit : Unit) : Drawable {
     init {
         show(1)

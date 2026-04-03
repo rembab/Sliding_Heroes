@@ -9,6 +9,9 @@ import io.github.slidingHeroes.util.BodyTag
 import io.github.slidingHeroes.util.Physics
 import io.github.slidingHeroes.util.RigidBody
 
+/**
+ * anything that moves, has the ability to hit something, and does something upon that hit
+ */
 abstract class Projectile (
     pos: Vector2,
     direction: Vector2,

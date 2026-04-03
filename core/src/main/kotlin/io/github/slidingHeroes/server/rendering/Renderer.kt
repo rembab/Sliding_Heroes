@@ -3,6 +3,9 @@ package io.github.slidingHeroes.server.rendering
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 
+/**
+ * renders all objects drawn using the DrawingBus
+ */
 class Renderer {
     val shape : ShapeRenderer = ShapeRenderer()
     val outline : ShapeRenderer = ShapeRenderer()

@@ -7,6 +7,11 @@ import io.github.slidingHeroes.world.units.UnitStatus
 import io.github.slidingHeroes.server.LevelSpace
 import io.github.slidingHeroes.server.rendering.Renderer
 
+/**
+ * a hero knight class
+ * bulky fighter sticking to the frontline
+ * todo: both abilities
+ */
 class HeroKnight (levelSpace : LevelSpace, heroesModule: HeroesModule, ownerID: Int) : Hero(levelSpace, heroesModule,
     ownerID
 ) {

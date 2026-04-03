@@ -10,6 +10,9 @@ import io.github.slidingHeroes.util.ButtonMessage
 import io.github.slidingHeroes.util.JoystickDraggedMessage
 import io.github.slidingHeroes.util.JoystickMessage
 
+/**
+ * a button control taking up half of the screen. Sends a ButtonMessage when pressed and released
+ */
 class BigButton(
     client: Client,
     inputId: Int = 0,

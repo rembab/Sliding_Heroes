@@ -10,7 +10,9 @@ import io.github.slidingHeroes.world.units.enemies.Enemy
 import io.github.slidingHeroes.util.RigidBody
 import io.github.slidingHeroes.world.units.Unit
 
-
+/**
+ * arrow spawned by the archer class hero. deals damage and applies knockback to enemy
+ */
 class ArcherArrow(
     position: Vector2,
     direction: Vector2,

@@ -2,6 +2,12 @@ package io.github.slidingHeroes.util
 
 import com.badlogic.gdx.math.Vector2
 
+/**
+ * anything that interacts with the physics engine
+ * or has any physical properties sych as position in the world
+ * for now all rigidbodies are circles, and their shape is fully defined by SIZE
+ * representing the radius of the circle.
+ */
 abstract class RigidBody
 {
 
